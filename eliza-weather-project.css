@@ -1,0 +1,61 @@
+body {
+  background: lightgray;
+}
+.card {
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  top: 40px;
+}
+form {
+  position: relative;
+  left: 50px;
+}
+h1 {
+  font-family: "Exo 2", sans-serif;
+  color: rgb(89, 112, 136);
+  font-weight: bolder;
+  position: relative;
+  left: 50px;
+  font-size: 75px;
+}
+h2 {
+  font-size: 60px;
+  color: rgb(89, 112, 136);
+  position: relative;
+  left: 50px;
+}
+h3 {
+  font-family: "Exo 2", sans-serif;
+  font-size: 60px;
+  color: rgb(89, 112, 136);
+  position: relative;
+  left: 50px;
+}
+a {
+  text-decoration: none;
+}
+h4 {
+  font-family: "Exo 2", sans-serif;
+  font-size: 20px;
+  color: rgb(89, 112, 136);
+  position: relative;
+  left: 55px;
+}
+.symbol {
+  font-size: 40px;
+  text-align: center;
+  color: rgb(89, 112, 136);
+}
+.Day {
+  text-align: center;
+  font-family: "Exo 2", sans-serif;
+  color: rgb(89, 112, 136);
+}
+.Temp {
+  text-align: center;
+  font-family: "Exo 2", sans-serif;
+  color: rgb(89, 112, 136);
+}
+p {
+  text-align: center;
+  font-family: monospace;
+}
