@@ -61,7 +61,7 @@ function showTemperature(response) {
   let icon = response.data.weather[0].icon;
 
   localCity.innerHTML = response.data.name;
-  temperatureElement.innerHTML = `${temperature}°C`;
+  temperatureElement.innerHTML = `${temperature}`;
   iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
 }
 
