@@ -54,6 +54,7 @@ let form = document.querySelector("form");
 form.addEventListener("submit", search);
 
 function showTemperature(response) {
+  celsiusTemperature = Math.round(response.data.main.temp);
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector(".temp-number");
   let localCity = document.querySelector("h1");
@@ -79,3 +80,24 @@ function getPosition(event) {
 
 let currentLocation = document.querySelector("#locator");
 currentLocation.addEventListener("click", getPosition);
+
+function displayFarenheit(event) {
+  event.preventDefault();
+  let farenheitTemperature = Math.round((celsiusTemperature * 9/5) + 32);
+  let farenheitConverter = document.querySelector(".temp-number");
+  farenheitConverter.innerHTML = farenheitTemperature;
+}
+
+let farenheitLink = document.querySelector("#farenheit-link");
+farenheitLink.addEventListener("click", displayFarenheit);
+
+function displayCelsius(event) {
+  event.preventDefault();
+  let celsiusConverter = document.querySelector(".temp-number");
+  celsiusConverter.innerHTML = celsiusTemperature;
+}
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsius);
+
+let celsiusTemperature = null;
