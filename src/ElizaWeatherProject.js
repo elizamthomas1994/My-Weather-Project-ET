@@ -44,10 +44,31 @@ function search(event) {
   searchLocation(input.value);
 }
 
+function displayForecast(response) {
+  let forecastElementOne = document.querySelector("#temp-one");
+  let forecastOne = response.data.list[0].main.temp_max;
+  forecastElementOne.innerHTML = `${Math.round(forecastOne)}°`;
+  let forecastElementTwo = document.querySelector("#temp-two");
+  let forecastTwo = response.data.list[1].main.temp_max;
+  forecastElementTwo.innerHTML = `${Math.round(forecastTwo)}°`;
+  let forecastElementThree = document.querySelector("#temp-three");
+  let forecastThree = response.data.list[2].main.temp_max;
+  forecastElementThree.innerHTML = `${Math.round(forecastThree)}°`;
+  let forecastElementFour = document.querySelector("#temp-four");
+  let forecastFour = response.data.list[3].main.temp_max;
+  forecastElementFour.innerHTML = `${Math.round(forecastFour)}°`;
+  let forecastElementFive = document.querySelector("#temp-five");
+  let forecastFive = response.data.list[4].main.temp_max;
+  forecastElementFive.innerHTML = `${Math.round(forecastFive)}°`;
+}
+
 function searchLocation(city) {
   let apiKey = "845420caf0be768c5c5bd5aebfc06b76";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
+
+  apiUrl =`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 let form = document.querySelector("form");
