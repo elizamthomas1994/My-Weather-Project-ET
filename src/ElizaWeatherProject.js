@@ -56,9 +56,13 @@ form.addEventListener("submit", search);
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector(".temp-number");
-  temperatureElement.innerHTML = `${temperature}°C`;
   let localCity = document.querySelector("h1");
+  let iconElement = document.querySelector("#icon");
+  let icon = response.data.weather[0].icon;
+
   localCity.innerHTML = response.data.name;
+  temperatureElement.innerHTML = `${temperature}°C`;
+  iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
 }
 
 function showPosition(position) {
