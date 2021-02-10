@@ -33,6 +33,16 @@ let month = months[now.getMonth()];
 let h4 = document.querySelector("h4");
 h4.innerHTML = `${day} ${date} ${month} ${hour}:${minute}`;
 
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  if(minutes < 10) {
+    minutes =`0${minutes}`;
+  } 
+  return `${hours}:${minutes}`;  
+}
+
 function search(event) {
   event.preventDefault();
   let input = document.querySelector("#city-input");
@@ -82,6 +92,17 @@ function displayForecast(response) {
   let iconFiveElement = document.querySelector("#forecast-five");
   let iconFive = forecastFifth.weather[0].icon;
   iconFiveElement.setAttribute("src", `http://openweathermap.org/img/wn/${iconFive}@2x.png`);
+
+  let timeOneElement = document.querySelector("#time-one");
+  timeOneElement.innerHTML = formatHours(forecastFirst.dt * 1000);
+  let timeTwoElement = document.querySelector("#time-two");
+  timeTwoElement.innerHTML = formatHours(forecastSecond.dt * 1000);
+  let timeThreeElement = document.querySelector("#time-three");
+  timeThreeElement.innerHTML = formatHours(forecastThird.dt * 1000);
+  let timeFourElement = document.querySelector("#time-four");
+  timeFourElement.innerHTML = formatHours(forecastFourth.dt * 1000);
+  let timeFiveElement = document.querySelector("#time-five");
+  timeFiveElement.innerHTML = formatHours(forecastFifth.dt * 1000);
 }
 
 function searchLocation(city) {
