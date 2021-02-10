@@ -1,9 +1,12 @@
 body {
   background: lightgray;
 }
-.card {
+.weather-project {
+  width: 900px;
+  margin: 50px auto;
+  border: 5px solid rgb(89, 112, 136);
+  border-radius: 20px;
   background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
-  top: 40px;
 }
 form {
   position: relative;
@@ -58,4 +61,6 @@ h4 {
 p {
   text-align: center;
   font-family: monospace;
+  position: relative;
+  top: -40px;
 }
