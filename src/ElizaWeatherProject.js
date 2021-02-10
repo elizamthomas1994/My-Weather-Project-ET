@@ -46,6 +46,12 @@ function search(event) {
 
 function displayForecast(response) {
   let forecastElementOne = document.querySelector("#temp-one");
+  let forecastFirst = response.data.list[0];
+  let forecastSecond = response.data.list[1];
+  let forecastThird = response.data.list[2];
+  let forecastFourth = response.data.list[3];
+  let forecastFifth = response.data.list[4];
+
   let forecastOne = response.data.list[0].main.temp_max;
   forecastElementOne.innerHTML = `${Math.round(forecastOne)}°`;
   let forecastElementTwo = document.querySelector("#temp-two");
@@ -60,6 +66,22 @@ function displayForecast(response) {
   let forecastElementFive = document.querySelector("#temp-five");
   let forecastFive = response.data.list[4].main.temp_max;
   forecastElementFive.innerHTML = `${Math.round(forecastFive)}°`;
+
+  let iconOneElement = document.querySelector("#forecast-one");
+  let iconOne = forecastFirst.weather[0].icon;
+  iconOneElement.setAttribute("src", `http://openweathermap.org/img/wn/${iconOne}@2x.png`);
+  let iconTwoElement = document.querySelector("#forecast-two");
+  let iconTwo = forecastSecond.weather[0].icon;
+  iconTwoElement.setAttribute("src", `http://openweathermap.org/img/wn/${iconTwo}@2x.png`);
+  let iconThreeElement = document.querySelector("#forecast-three");
+  let iconThree = forecastThird.weather[0].icon;
+  iconThreeElement.setAttribute("src", `http://openweathermap.org/img/wn/${iconThree}@2x.png`);
+  let iconFourElement = document.querySelector("#forecast-four");
+  let iconFour = forecastFourth.weather[0].icon;
+  iconFourElement.setAttribute("src", `http://openweathermap.org/img/wn/${iconFour}@2x.png`);
+  let iconFiveElement = document.querySelector("#forecast-five");
+  let iconFive = forecastFifth.weather[0].icon;
+  iconFiveElement.setAttribute("src", `http://openweathermap.org/img/wn/${iconFive}@2x.png`);
 }
 
 function searchLocation(city) {
