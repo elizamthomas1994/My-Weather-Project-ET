@@ -128,6 +128,48 @@ function showTemperature(response) {
   localCity.innerHTML = response.data.name;
   temperatureElement.innerHTML = `${temperature}`;
   iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
+
+  let unixTimestamp = response.data.dt;
+  let timezoneOffset = response.data.timezone;
+  let localUnixTimestamp = unixTimestamp + timezoneOffset;
+  let timeZone = new Date(localUnixTimestamp * 1000);
+  let h4 = document.querySelector("h4");
+  h4.innerHTML = formatHours(timeZone);
+
+  function formatHours() {
+      let days = [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ];
+      let months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "June",
+        "July",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ];
+      let day = days[timeZone.getDay()];
+      let hours = timeZone.getHours();
+      let minutes = timeZone.getMinutes();
+      let date = timeZone.getDate();
+      let month = months[timeZone.getMonth()];
+      if(minutes < 10) {
+        minutes =`0${minutes}`;
+      } 
+      return `${day} ${date} ${month} ${hours}:${minute}`;
+  }
 }
 
 function showPosition(position) {
