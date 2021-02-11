@@ -57,6 +57,7 @@ function search(event) {
 function displayForecast(response) {
   let forecastElementOne = document.querySelector("#temp-one");
   let forecastFirst = response.data.list[0];
+  console.log(response.data.city.timezone);
   let forecastSecond = response.data.list[1];
   let forecastThird = response.data.list[2];
   let forecastFourth = response.data.list[3];
@@ -92,17 +93,34 @@ function displayForecast(response) {
   let iconFiveElement = document.querySelector("#forecast-five");
   let iconFive = forecastFifth.weather[0].icon;
   iconFiveElement.setAttribute("src", `http://openweathermap.org/img/wn/${iconFive}@2x.png`);
+  
+  let unixFirstTimestamp = response.data.list[0].dt;
+  let timezoneFirstOffset = response.data.city.timezone;
+  let localUnixFirstTimestamp = unixFirstTimestamp + timezoneFirstOffset;
+  let timeZoneFirst = new Date(localUnixFirstTimestamp * 1000);
+  let unixSecondTimestamp = response.data.list[1].dt;
+  let localUnixSecondTimestamp = unixSecondTimestamp + timezoneFirstOffset;
+  let timeZoneSecond = new Date(localUnixSecondTimestamp * 1000);
+  let unixThirdTimestamp = response.data.list[2].dt;
+  let localUnixThirdTimestamp = unixThirdTimestamp + timezoneFirstOffset;
+  let timeZoneThird = new Date(localUnixThirdTimestamp * 1000);
+  let unixFourthTimestamp = response.data.list[3].dt;
+  let localUnixFourthTimestamp = unixFourthTimestamp + timezoneFirstOffset;
+  let timeZoneFourth = new Date(localUnixFourthTimestamp * 1000);
+  let unixFifthTimestamp = response.data.list[4].dt;
+  let localUnixFifthTimestamp = unixFifthTimestamp + timezoneFirstOffset;
+  let timeZoneFifth = new Date(localUnixFifthTimestamp * 1000);
 
   let timeOneElement = document.querySelector("#time-one");
-  timeOneElement.innerHTML = formatHours(forecastFirst.dt * 1000);
+  timeOneElement.innerHTML = formatHours(timeZoneFirst);
   let timeTwoElement = document.querySelector("#time-two");
-  timeTwoElement.innerHTML = formatHours(forecastSecond.dt * 1000);
+  timeTwoElement.innerHTML = formatHours(timeZoneSecond);
   let timeThreeElement = document.querySelector("#time-three");
-  timeThreeElement.innerHTML = formatHours(forecastThird.dt * 1000);
+  timeThreeElement.innerHTML = formatHours(timeZoneThird);
   let timeFourElement = document.querySelector("#time-four");
-  timeFourElement.innerHTML = formatHours(forecastFourth.dt * 1000);
+  timeFourElement.innerHTML = formatHours(timeZoneFourth);
   let timeFiveElement = document.querySelector("#time-five");
-  timeFiveElement.innerHTML = formatHours(forecastFifth.dt * 1000);
+  timeFiveElement.innerHTML = formatHours(timeZoneFifth);
 }
 
 function searchLocation(city) {
