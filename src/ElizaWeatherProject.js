@@ -46,18 +46,17 @@ function formatHours(timestamp) {
 function search(event) {
   event.preventDefault();
   let input = document.querySelector("#city-input");
-  if (input.value === null) {
-    alert("Your entered country was unrecognized! Please try again!");
-  }
   let h1 = document.querySelector("h1");
+  if (input.value === "") {
+    alert("Sorry! We didn't recognise your input 😞 Please try again!");
+  } else {
   h1.innerHTML = `${input.value}`;
-  searchLocation(input.value);
+  searchLocation(input.value);}
 }
 
 function displayForecast(response) {
   let forecastElementOne = document.querySelector("#temp-one");
   let forecastFirst = response.data.list[0];
-  console.log(response.data.city.timezone);
   let forecastSecond = response.data.list[1];
   let forecastThird = response.data.list[2];
   let forecastFourth = response.data.list[3];
