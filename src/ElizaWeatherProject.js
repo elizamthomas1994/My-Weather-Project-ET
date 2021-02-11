@@ -141,6 +141,9 @@ function showTemperature(response) {
   let localCity = document.querySelector("h1");
   let iconElement = document.querySelector("#icon");
   let icon = response.data.weather[0].icon;
+  let weatherDescription = response.data.weather[0].description; 
+  weatherDescription = weatherDescription.toUpperCase();
+  let windSpeed = Math.round(response.data.wind.speed);
 
   localCity.innerHTML = response.data.name;
   temperatureElement.innerHTML = `${temperature}`;
@@ -187,6 +190,11 @@ function showTemperature(response) {
       } 
       return `${day} ${date} ${month} ${hours}:${minute}`;
   }
+
+  let descriptionElement = document.querySelector(".weather-description");
+  descriptionElement.innerHTML = weatherDescription;
+  let windElement = document.querySelector(".wind-speed");
+  windElement.innerHTML = `WIND SPEED: ${windSpeed}mph`;
 }
 
 function showPosition(position) {

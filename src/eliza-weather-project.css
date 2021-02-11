@@ -48,6 +48,16 @@ h4 {
   position: relative;
   left: 55px;
 }
+.weather-description {
+  font-family: "Exo 2", sans-serif;
+  color: rgb(89, 112, 136);
+  font-size: 25px;
+}
+.wind-speed {
+  font-family: "Exo 2", sans-serif;
+  color: rgb(89, 112, 136);
+  font-size: 25px;
+}
 .symbol {
   text-align: center;
 }
